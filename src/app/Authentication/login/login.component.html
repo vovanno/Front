@@ -1,0 +1,16 @@
+
+  <form #form="ngForm" (submit)="onSubmit(UserName.value,Password.value)" class="col-md-4" autocomplete="off">
+      <div class="form-group">
+        <label>UserName</label>
+        <input type="text" #UserName class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" #Password class="form-control" required>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-warning btn-sm">Submit</button>
+      </div>
+    </form>
+
+  

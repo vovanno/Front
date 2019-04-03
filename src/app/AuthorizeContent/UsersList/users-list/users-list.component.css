@@ -1,0 +1,24 @@
+.user{
+    width: 400px;
+    display: flex;
+    padding: 10px; 
+    border: 2px solid violet;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.profileInfo{
+    display:flex;
+    margin-left: inherit;
+}
+
+.userLogo{
+    align-content: center;
+    width: 90px;
+    height: auto;
+    display: block;
+    /* border: 1px solid black; */
+    border-radius: 25px;
+    text-align: center;
+    
+}
