@@ -1,12 +1,14 @@
 
-  <form #form="ngForm" (submit)="onSubmit(UserName.value,Password.value)" class="col-md-4" autocomplete="off">
-      <div class="form-group">
+  <form #form="ngForm" (submit)="onSubmit(UsernameControl.value,PasswordControl.value)" class="col-md-4" autocomplete="off">
+      <div class="form-group" [class.has-errors]="UsernameControl.invalid && UsernameControl.touched">
         <label>UserName</label>
-        <input type="text" #UserName class="form-control" required>
+        <input required type="text" name="UserName" #UsernameControl="ngModel" (ngModel)="UserName" class="form-control">
+        <span *ngIf="UsernameControl.errors?.required && UsernameControl.touched">This field is required</span>
       </div>
-      <div class="form-group">
+      <div class="form-group" [class.has-errors]="PasswordControl.invalid && PasswordControl.touched">
         <label>Password</label>
-        <input type="password" #Password class="form-control" required>
+        <input required type="password" name="Password" #PasswordControl="ngModel" (ngModel)="Password" #Password class="form-control">
+        <span *ngIf="PasswordControl.errors?.required && PasswordControl.touched">This field is required</span>
       </div>
       <div class="form-group">
         <button [disabled]="!form.valid" type="submit" class="btn btn-warning btn-sm">Submit</button>

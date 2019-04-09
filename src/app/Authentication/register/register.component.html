@@ -1,23 +1,25 @@
   <form #form="ngForm" (submit)="onSubmit(form)" class="col-md-4" autocomplete="off">
-    <!-- <div class="form-group">
-      <label>Name</label>
-      <input name="Name" #CategoryId="ngModel" [(ngModel)] = "service.formData.Name" class="form-control" required>
-    </div> -->
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="UserName.invalid && UserName.touched">
       <label>UserName</label>
-      <input name="UserName" #CategoryId="ngModel" [(ngModel)] = "service.formData.UserName" class="form-control">
+      <input required name="UserName" #UserName="ngModel" (ngModel)="service.formData.UserName" class="form-control">
+      <span *ngIf="UserName.errors?.required && UserName.touched">UserName is required</span>
+    </div>    
+    <div class="form-group" [class.has-error]="Email.invalid && Email.touched">
+      <label >Email</label>
+      <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" name="Email" #Email="ngModel" (ngModel) = "service.formData.Email" class="form-control">
+      <span *ngIf="Email.errors?.required && Email.touched">Email is required</span>
+      <span *ngIf="Email.errors?.pattern && Email.touched">Email is invalid</span>
     </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" name="Email" #Name="ngModel" [(ngModel)] = "service.formData.Email" class="form-control" required>
-    </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="Password.invalid && Password.touched">
       <label>Password</label>
-      <input type="password" name="Password" #Name="ngModel" [(ngModel)] = "service.formData.Password" class="form-control" required>
+      <input required type="password" name="Password" #Password="ngModel" (ngModel) = "service.formData.Password" class="form-control" >
+      <span *ngIf="Password.errors?.required && Password.touched">Password is required</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [class.has-error]="ConfirmPassword.invalid && ConfirmPassword.touched">
       <label>ConfirmPassword</label>
-      <input type= "password" name="ConfirmPassword" #Name="ngModel" [(ngModel)] = "service.formData.ConfirmPassword" class="form-control" required>
+      <input required type= "password" appConfirmedValidator="Password" name="ConfirmPassword" #ConfirmPassword="ngModel" (ngModel) = "service.formData.ConfirmPassword" class="form-control">
+      <span *ngIf="ConfirmPassword.errors?.required && ConfirmPassword.touched">ConfirmPassword is required</span>
+      <span *ngIf="ConfirmPassword.errors?.notEqual && ConfirmPassword.touched && !ConfirmPassword.errors?.required ">Passwords does not match to each other</span>
     </div>
     <div class="form-group">
       <button [disabled]="!form.valid" type="submit" class="btn btn-warning btn-sm">Submit</button>

@@ -1,0 +1,27 @@
+<div class="image-details ">
+  <button class="closeButton" (click)="closeImageDetails()">X</button> 
+    <div class="image-data">
+        <table>
+          <tr>
+            <td>
+              <img class="image-popup" [src]="Image.ImageName" alt="Image">
+            </td>
+            <td class="image-right-block">
+              <table >
+                <tr><label class="image-caption">{{Image.Caption}}</label></tr>
+                <tr><textarea class="image-comment-area">some comments from other users</textarea></tr>        
+              </table>            
+            </td>
+          </tr>
+          <tr>
+              <button class="btn btn-danger btn-deleteImage" (click)="DeleteImage(Image)">Delete</button>
+            </tr>
+        </table>
+    </div>
+
+    
+
+</div>
+
+
+

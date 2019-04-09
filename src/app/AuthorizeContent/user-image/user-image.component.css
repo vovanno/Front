@@ -1,0 +1,12 @@
+.image-cell{
+    display: inline-table;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.image-cell img{
+    width: 350px;
+    height: 350px;
+    cursor: pointer;
+}
+

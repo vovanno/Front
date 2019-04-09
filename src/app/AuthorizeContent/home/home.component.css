@@ -1,3 +1,7 @@
+h4 {
+    text-align: center;
+}
+
 .userLogo{
     display: block;
     padding: 10px;
@@ -6,7 +10,7 @@
     border-radius: 50%;
 }
 
-.mainProfile{
+.main-profile-block{
     padding-left: 40px;
     padding-bottom: 20px;
 }
@@ -20,4 +24,40 @@
 
 .uploadLabel:hover {
     background-color: yellow;
-  }
+}
+
+
+.image-upload-block{
+    text-align: center;
+    border: 1px solid black;
+    vertical-align: center;
+}
+
+.image-interaction{
+    width: 110px;
+    margin: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+    cursor: pointer;
+}
+
+.upload-image-input{
+    display: block;
+    margin: auto;
+    border: 1px solid saddlebrown;
+    width: 200px;
+    height: 200px;
+    background-size: cover; 
+}
+
+.caption-div label{
+    display: grid;
+}
+
+.choose-image-input{
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+

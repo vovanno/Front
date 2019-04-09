@@ -15,9 +15,8 @@
 .userLogo{
     align-content: center;
     width: 90px;
-    height: auto;
+    height: 90px;
     display: block;
-    /* border: 1px solid black; */
     border-radius: 25px;
     text-align: center;
     

@@ -1,0 +1,7 @@
+.has-errors label,span{
+    color: salmon;    
+}
+
+.has-errors input{
+    border: 1px solid salmon;
+}

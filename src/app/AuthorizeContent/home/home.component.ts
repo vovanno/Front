@@ -1,36 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { RegisterService } from 'src/app/Services/register.service';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/Services/profile.service';
 import { NgForm } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ImageServiceService } from 'src/app/Services/image-service.service';
+import { fillProperties } from '@angular/core/src/util/property';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent implements OnInit {
   userImage: string = "/assets/DefaultUser.png";
+  uploadedImage: string="/assets/UploadImageButton.png";
   fileToUpload: File = null;
-  constructor(private service: RegisterService, private router: Router,
+  isDefaultImage: boolean = true;
+  NeedRefreshing: boolean=false;
+  constructor(private service: RegisterService, private imageService: ImageServiceService,
      private profileService: ProfileService, private toastr:ToastrService) { }
+
+     @ViewChild('fileInput')
+     inputVariable: ElementRef;
 
   ngOnInit() {
     this.getUserClaims();
     this.getUserProfile(); 
+    this.GetUserImages();
   }
 
-  handleFileInput(file: FileList){
+  handleAvatarInput(file: FileList){
     this.fileToUpload = file.item(0);
     var reader = new FileReader();
     reader.onload = (event:any)=>
     this.userImage = event.target.result;
     reader.readAsDataURL(this.fileToUpload);
-    this.profileService.UploadImage("",this.fileToUpload).subscribe(()=>{
+    this.profileService.UpdateAvatarImage(this.fileToUpload).subscribe(()=>{
       this.toastr.success("Avatar updated")
     },()=>this.toastr.error("Something went wrong"));
+  }
+
+  handleImageInput(file: FileList){
+    this.CancelLoading(); 
+    console.log(file)
+    console.log(file.item(0));
+    console.log(this.inputVariable.nativeElement.value)
+    this.isDefaultImage = false;
+    this.fileToUpload = file.item(0);
+    var reader = new FileReader();
+    reader.onload = (event:any)=>{
+      this.uploadedImage = event.target.result;
+      this.inputVariable.nativeElement.value = null;
+    }
+      reader.readAsDataURL(this.fileToUpload);
+  }
+
+  UploadImage(caption: any){
+    this.imageService.UploadImage(caption,this.fileToUpload).subscribe(()=>{
+      this.toastr.success("Image uploaded");
+      this.CancelLoading();
+      this.GetUserImages();
+    },()=>this.toastr.error("Something went wrong"));
+    this.CancelLoading();    
+  }
+
+  CancelLoading(){
+    this.uploadedImage ="/assets/UploadImageButton.png";
+    this.isDefaultImage = true;
   }
 
   getUserClaims(){
@@ -41,14 +81,8 @@ export class HomeComponent implements OnInit {
     this.profileService.GetUserProfile().subscribe((data: any)=>{
       this.profileService.formData = data;
           if(data.AvatarImage!="")
-      this.userImage = data.AvatarImage;
+      this.userImage =data.AvatarImage;
     });
-  }
-
-  onSubmit(form: NgForm){
-    this.profileService.ModifyProfile(form.value).subscribe(()=>{
-      this.toastr.success("Changes saved")
-    },()=>this.toastr.error("Something went wrong"));
   }
 
   ModifyProfile(form: NgForm){
@@ -57,10 +91,14 @@ export class HomeComponent implements OnInit {
     },()=>this.toastr.error("Something went wrong"));
   }
 
-  Logout(){
-    localStorage.removeItem('userToken');
-    this.profileService.formData = null;
-    this.router.navigate(['Login']);
+  GetUserImages(){
+    this.imageService.GetUserImages().subscribe((data:any)=>
+    this.imageService.imageData = data
+    );
+  }
+
+  RefreshImages(){
+    this.GetUserImages();
   }
 
 }

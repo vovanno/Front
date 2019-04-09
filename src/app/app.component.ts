@@ -7,16 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MyProject';
-  isLoggedin: boolean = false;
   ngOnInit() {
     this.isLoggedIn();
   }
 
+  logout(){
+    localStorage.removeItem('userToken');
+  }
 
   isLoggedIn(){
     if (localStorage.getItem('userToken') == null) {
-      this.isLoggedin = false;
-      return this.isLoggedin;
+      return false;
     }
     else {
       return true;

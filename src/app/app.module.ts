@@ -17,6 +17,11 @@ import { AuthGuard } from './Auth/auth.guard';
 import { AuthInterceptor } from './Auth/auth.interceptor';
 import { ProfileService } from './Services/profile.service';
 import { UsersListComponent } from './AuthorizeContent/UsersList/users-list/users-list.component';
+import { ConfirmEqualValidatorDirective } from './Shared/confirm-equal-validator.directive';
+import { GalleryComponent } from './AuthorizeContent/gallery/gallery.component';
+import { UserImageComponent } from './AuthorizeContent/user-image/user-image.component';
+import { ImageDetailsComponent } from './AuthorizeContent/image-details/image-details.component';
+import { ImageServiceService } from './Services/image-service.service';
 
 @NgModule({
   declarations: [
@@ -24,8 +29,11 @@ import { UsersListComponent } from './AuthorizeContent/UsersList/users-list/user
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UsersListComponent
-
+    UsersListComponent,
+    ConfirmEqualValidatorDirective,
+    GalleryComponent,
+    UserImageComponent,
+    ImageDetailsComponent
     
   ],
   imports: [
@@ -34,13 +42,14 @@ import { UsersListComponent } from './AuthorizeContent/UsersList/users-list/user
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     RegisterService,
     HttpClientModule,
     ProfileService,
     AuthGuard,
+    ImageServiceService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

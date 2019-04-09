@@ -6,3 +6,16 @@
 .mainProfile{
     padding-left: 40px;
 }
+
+.has-error input{
+    border: 1px solid salmon;    
+}
+
+.has-error label{
+    color: salmon;
+}
+
+.has-error span{
+    color: salmon;
+}
+

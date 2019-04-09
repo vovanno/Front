@@ -10,8 +10,12 @@ export class UsersListComponent implements OnInit {
 
   constructor(private service: ProfileService) { }
 
+  UserLogo: string = "../../../assets/DefaultUser.png";
   ngOnInit() {
-    this.service.GetUsersList();
+    this.service.GetUsersList().subscribe((data:any)=>{
+    this.service.usersList = data;
+    });
+    
   }
 
 }

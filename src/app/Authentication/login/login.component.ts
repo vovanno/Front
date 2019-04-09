@@ -3,6 +3,8 @@ import { RegisterService } from 'src/app/Services/register.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from "ngx-toastr";
+import { NgForm } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-login',

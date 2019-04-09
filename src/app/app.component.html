@@ -3,11 +3,13 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" href="#">Features</a>
     <a class="p-2 text-dark" href="#">Enterprise</a>
+    <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Gallery">Gallery</a>
     <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Users">Users</a>
     <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Home">Profile</a>
   </nav>
-  <a class="btn btn-outline-primary" routerLink = "Register">Register</a>
-  <a class="btn btn-outline-primary" routerLink = "Login">Log In</a>
+  <a *ngIf="isLoggedIn()==false" class="btn btn-outline-primary" routerLink = "Register">Register</a>
+  <a *ngIf="isLoggedIn()==false" class="btn btn-outline-primary" routerLink = "Login">Sign In</a>
+  <a *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-outline-primary" routerLink = "Login">Sign out</a>
 </div>
 
 <router-outlet></router-outlet>

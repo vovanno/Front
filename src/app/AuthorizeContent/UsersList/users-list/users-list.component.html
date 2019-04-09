@@ -1,5 +1,5 @@
 <div *ngFor="let user of service.usersList" class="user">
-  <img class="userLogo" src="../../../assets/DefaultUser.png" alt="logo">
+  <img class="userLogo" [src]="user.AvatarImage" alt="logo">
   <table class="profileInfo">
     <td>
       <tr>First Name: {{user.FirstName}}</tr>
