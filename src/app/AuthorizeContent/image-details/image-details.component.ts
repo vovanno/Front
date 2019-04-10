@@ -12,6 +12,8 @@ export class ImageDetailsComponent implements OnInit {
 
   @Input()
   Image:Images;
+  @Input()
+  ShowDeleteBtn:boolean;
   
   @Output()
   IsHidden = new EventEmitter();

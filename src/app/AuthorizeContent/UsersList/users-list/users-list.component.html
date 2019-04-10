@@ -1,10 +1,19 @@
-<div *ngFor="let user of service.usersList" class="user">
-  <img class="userLogo" [src]="user.AvatarImage" alt="logo">
-  <table class="profileInfo">
-    <td>
-      <tr>First Name: {{user.FirstName}}</tr>
-      <tr>Last Name: {{user.LastName}}</tr>
-      <tr>Address: {{user.Address}}</tr> 
-    </td>
-  </table>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div *ngFor="let user of service.usersList" class="user">
+        <img class="userLogo" [src]="user.AvatarImage" (click)="ShowUserImages(user.Id)" alt="logo">
+        <table class="profileInfo">
+          <td>
+            <tr>First Name: {{user.FirstName}}</tr>
+            <tr>Last Name: {{user.LastName}}</tr>
+            <tr>Address: {{user.Address}}</tr> 
+          </td>
+        </table>
+      </div> 
+    </div>     
+    <div class="col-md-7 images-area" *ngIf="ShowImages">
+      <app-user-image *ngFor="let image of Images" [Image]="image" [ShowDeleteBtn]="false"></app-user-image>
+    </div>
+  </div>
 </div>

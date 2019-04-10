@@ -34,6 +34,10 @@ export class HomeComponent implements OnInit {
   }
 
   handleAvatarInput(file: FileList){
+    if(file.item(0).type != "image/jpeg" &&  file.item(0).type != "image/png"){
+      this.toastr.error("You can upload only .gpeg or .png type of image")
+      return;
+    }
     this.fileToUpload = file.item(0);
     var reader = new FileReader();
     reader.onload = (event:any)=>
@@ -45,18 +49,18 @@ export class HomeComponent implements OnInit {
   }
 
   handleImageInput(file: FileList){
-    this.CancelLoading(); 
-    console.log(file)
-    console.log(file.item(0));
-    console.log(this.inputVariable.nativeElement.value)
-    this.isDefaultImage = false;
-    this.fileToUpload = file.item(0);
-    var reader = new FileReader();
-    reader.onload = (event:any)=>{
-      this.uploadedImage = event.target.result;
-      this.inputVariable.nativeElement.value = null;
+    if(file.item(0).type != "image/jpeg" &&  file.item(0).type != "image/png"){
+      this.toastr.error("You can upload only .gpeg or .png type of image")
+      return;
     }
-      reader.readAsDataURL(this.fileToUpload);
+      this.isDefaultImage = false;
+      this.fileToUpload = file.item(0);
+      var reader = new FileReader();
+      reader.onload = (event:any)=>{
+        this.uploadedImage = event.target.result;
+        this.inputVariable.nativeElement.value = null;
+      }
+        reader.readAsDataURL(this.fileToUpload);
   }
 
   UploadImage(caption: any){

@@ -12,6 +12,9 @@ export class UserImageComponent implements OnInit {
   @Input()
   Image:Images;
 
+  @Input()
+  ShowDeleteBtn:boolean;
+  
   @Output()
   Refresh = new EventEmitter();
 

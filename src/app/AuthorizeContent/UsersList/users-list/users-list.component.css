@@ -1,5 +1,4 @@
 .user{
-    width: 400px;
     display: flex;
     padding: 10px; 
     border: 2px solid violet;
@@ -19,5 +18,16 @@
     display: block;
     border-radius: 25px;
     text-align: center;
+    cursor: pointer;
     
+}
+.wrapper{
+    display: flex;
+}
+
+.images-area{
+    background-color: whitesmoke;
+    height: 600px;
+    overflow: auto;
+    margin: auto;
 }

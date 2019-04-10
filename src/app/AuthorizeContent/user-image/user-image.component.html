@@ -1,7 +1,9 @@
 
   <div class="image-cell">
     <img [src]="Image.ImageName" alt="Image" (click)="ShowImageDetails()"> 
-    <app-image-details *ngIf="!IsHidden" [Image]="Image" (IsHidden)="HideImageDetails($event)" 
+    <app-image-details *ngIf="!IsHidden" [Image]="Image" 
+    [ShowDeleteBtn]="ShowDeleteBtn"
+    (IsHidden)="HideImageDetails($event)" 
     (NeedRefreshing)="RefreshImages($event)"></app-image-details>
   </div>
 

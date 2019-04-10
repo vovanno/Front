@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Images } from '../Models/images';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class ImageServiceService {
   constructor(private http: HttpClient) { }
   
   private Url = "http://localhost:51312";
+  private reqHeader = new HttpHeaders({'No-Auth':'True'});
 
   UploadImage(caption: string, fileToUpload:File){
     const Data: FormData = new FormData();
@@ -27,6 +28,18 @@ export class ImageServiceService {
   
   GetUserImages(){
     return this.http.get(this.Url+"/Api/Images/GetUserImages");
+  }
+
+  GetAllImages(page:number = 1){
+    return this.http.get(this.Url+"/Api/Images/GetAllImages/"+page,{headers:this.reqHeader})
+  }
+
+  GetPages(){
+    return this.http.get(this.Url+"/Api/Images/GetPages",{headers:this.reqHeader}) 
+  }
+
+  SearchImages(Caption:string){
+    return this.http.get(this.Url+"/Api/Images/Search/"+Caption,{headers:this.reqHeader});
   }
 
 }

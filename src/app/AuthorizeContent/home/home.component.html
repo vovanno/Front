@@ -34,11 +34,11 @@
     <div class="col-md-3 offset-md-1 image-upload-block">
         <h3>Upload Image</h3> 
         <img [src]="uploadedImage" class="upload-image-input">
-        <input hidden type="file" #fileInput id="imageInput" (change)="handleImageInput($event.target.files)">
+        <input hidden type="file" accept="image/*" #fileInput id="imageInput" (change)="handleImageInput($event.target.files)">
             <span *ngIf="!isDefaultImage" class="caption-div">
                 <label for="CaptionInput">Caption</label>
                 <input type="text" #CaptionInput name="captionInput" [(ngModel)]="captionInput">
-                <button class="btn btn-success btn-sm image-interaction" (click)="UploadImage(CaptionInput)">Submit</button>
+                <button class="btn btn-success btn-sm image-interaction" (click)="UploadImage(CaptionInput.value)">Submit</button>
                 <button class="btn btn-danger btn-sm image-interaction" (click)="CancelLoading()">Cancel</button>
             </span>
         <label for="imageInput" class="btn btn-warning btn-sm image-interaction">Choose image</label>
@@ -48,7 +48,7 @@
 
 <hr>
 <h4>Images</h4>
-<app-user-image *ngFor="let image of imageService.imageData" [Image]="image" (Refresh)="RefreshImages($event)"></app-user-image>
+<app-user-image *ngFor="let image of imageService.imageData" [Image]="image" [ShowDeleteBtn]="true" (Refresh)="RefreshImages($event)"></app-user-image>
 
     
 

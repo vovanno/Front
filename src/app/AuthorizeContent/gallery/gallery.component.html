@@ -1,3 +1,17 @@
-<p>
-  gallery works!
-</p>
+<div class="container-fluid">
+  <div class="Searchng-area">
+    <label (click)="ResetMessage()" for="Search">Search</label>
+    <input type="text" #SearchingInput name="Search"> 
+    <button (click)="SearchImages(SearchingInput.value)" class="SearchButton"></button>
+    <button *ngIf="Message!='' || (SearchingInput.value !='' && service.imageData.length>0)" (click)="Clear()" class="ClearBtn">Clear</button>
+    <label *ngIf="Message!=''" class="message-danger">{{Message}}</label>
+  </div>
+  <div class="row">
+    <app-user-image class="gallery" *ngFor="let image of service.imageData" [Image]="image" [ShowDeleteBtn]="false"></app-user-image>
+  </div>
+  <div *ngIf="!HidePaging" class="row paging-div">
+    <span class="paging-btn-area" *ngFor="let page of Enumeration">
+      <button class="paging-btn" (click)="ChangePage(page)">{{page}}</button>
+    </span>
+  </div>
+</div>

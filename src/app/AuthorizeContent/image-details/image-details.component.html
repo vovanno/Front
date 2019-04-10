@@ -13,14 +13,11 @@
               </table>            
             </td>
           </tr>
-          <tr>
+          <tr *ngIf="ShowDeleteBtn">
               <button class="btn btn-danger btn-deleteImage" (click)="DeleteImage(Image)">Delete</button>
             </tr>
         </table>
-    </div>
-
-    
-
+    </div>  
 </div>
 
 

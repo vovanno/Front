@@ -31,4 +31,8 @@ usersList: Profile[];
     return this.http.post(this.Url+"/Api/Profile/UploadAvatar",Data);
   }
 
+  GetUserImages(id:string){
+    return this.http.get(this.Url+"/Api/Profile/"+ id+ "/Images");
+  }
+
 }
