@@ -22,6 +22,8 @@ import { GalleryComponent } from './AuthorizeContent/gallery/gallery.component';
 import { UserImageComponent } from './AuthorizeContent/user-image/user-image.component';
 import { ImageDetailsComponent } from './AuthorizeContent/image-details/image-details.component';
 import { ImageServiceService } from './Services/image-service.service';
+import { AdminContentComponent } from './admin-content/admin-content.component';
+import { AdminService } from "./Services/admin.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ImageServiceService } from './Services/image-service.service';
     ConfirmEqualValidatorDirective,
     GalleryComponent,
     UserImageComponent,
-    ImageDetailsComponent
+    ImageDetailsComponent,
+    AdminContentComponent
     
   ],
   imports: [
@@ -50,6 +53,7 @@ import { ImageServiceService } from './Services/image-service.service';
     ProfileService,
     AuthGuard,
     ImageServiceService,
+    AdminService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

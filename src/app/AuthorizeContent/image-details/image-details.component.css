@@ -28,16 +28,24 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     display: flex;
     background-color: aliceblue;
     z-index: 2;
 }
 
+.image-data table tr{
+    text-align: -webkit-center;
+}
+
 .image-right-block{
     text-align: center;
     vertical-align: initial;
+    width: 200px;
+}
+
+.image-right-block table{
+    display: initial;
 }
 
 .image-comment-area{
@@ -47,6 +55,23 @@
 .btn-deleteImage{
     width: 100%;
     margin: 1px;
+}
+
+.rate-btn{
+    display: block;
+    margin: 15px;
+    width: 54px;
+    height: 54px;
+    background-image: url(../../../assets/SimpleStar.png);
+    background-repeat: no-repeat;
+}
+
+.rate-btn:hover{
+    background-image: url(../../../assets/goldStar.png);
+}
+
+.test{
+    background-image: url(../../../assets/goldStar.png);
 }
 
 

@@ -3,12 +3,24 @@
     padding: 10px; 
     border: 2px solid violet;
     border-radius: 25px;
+    justify-content: space-between;
     margin: 10px;
+}
+
+.user btn {
+    text-align: right;
 }
 
 .profileInfo{
     display:flex;
     margin-left: inherit;
+}
+
+.DeleteUser{
+    display: grid;
+    width: 100px;
+    align-content: center;
+    margin-left: 60px;
 }
 
 .userLogo{
@@ -19,6 +31,7 @@
     border-radius: 25px;
     text-align: center;
     cursor: pointer;
+    margin: 0 10px 0 0;
     
 }
 .wrapper{
@@ -30,4 +43,37 @@
     height: 600px;
     overflow: auto;
     margin: auto;
+}
+.flex{
+    display: flex;
+}
+
+.popup-dialog{
+    position: fixed;
+    height: 100vh;    
+    width: 100vw;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    text-align: right;
+}
+
+.popup-data{
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    background-color: aliceblue;
+    z-index: 2;
+    width: 400px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-data button{
+    margin: 10px;
 }

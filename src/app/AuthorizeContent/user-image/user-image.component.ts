@@ -32,8 +32,8 @@ export class UserImageComponent implements OnInit {
     this.IsHidden = event;
   }
 
-  RefreshImages(event: boolean){
-    this.Refresh.emit(true);
+  RefreshImages(event: string){
+    this.Refresh.emit(event);
   }
 
 }

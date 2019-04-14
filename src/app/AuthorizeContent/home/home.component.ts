@@ -16,7 +16,7 @@ import { fillProperties } from '@angular/core/src/util/property';
 
 
 export class HomeComponent implements OnInit {
-  userImage: string = "/assets/DefaultUser.png";
+  userImage: string = "/assets/DefaultUser.jpg";
   uploadedImage: string="/assets/UploadImageButton.png";
   fileToUpload: File = null;
   isDefaultImage: boolean = true;
@@ -77,8 +77,8 @@ export class HomeComponent implements OnInit {
     this.isDefaultImage = true;
   }
 
-  getUserClaims(){
-    this.service.GetUserClaims();
+  async getUserClaims(){
+     this.service.GetUserClaims().subscribe((data:any)=>this.service.userData = data);
   }
 
   getUserProfile(){

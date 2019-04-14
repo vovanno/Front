@@ -1,12 +1,13 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">Internet Photo-Album</h5>
   <nav class="my-2 my-md-0 mr-md-3">
+    <a *ngIf="service.userData.UserName =='Admin'" class="p-2 text-dark" routerLink = "AdminPanel">AdminPanel</a>
     <a class="p-2 text-dark" routerLink = "Gallery">Gallery</a>
     <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Users">Users</a>
     <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Home">Profile</a>
   </nav>
-  <a *ngIf="isLoggedIn()==false" class="btn btn-outline-primary" routerLink = "Register">Register</a>
-  <a *ngIf="isLoggedIn()==false" class="btn btn-outline-primary" routerLink = "Login">Sign In</a>
+  <a *ngIf="!isLoggedIn()" class="btn btn-outline-primary" routerLink = "Register">Register</a>
+  <a *ngIf="!isLoggedIn()" class="btn btn-outline-primary" routerLink = "Login">Sign In</a>
   <a *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-outline-primary" routerLink = "Login">Sign out</a>
 </div>
 
