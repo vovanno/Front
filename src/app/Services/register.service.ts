@@ -18,7 +18,7 @@ private readonly Url = "http://localhost:51312";
   
   Register(model: RegisterModel){
   var rHeaders = new HttpHeaders({'No-Auth':'True'});
-  return this.http.post(this.Url+"/Api/Authentication/Register", model,{headers:rHeaders});
+  return this.http.post(this.Url+"/Authentication/Register", model,{headers:rHeaders});
   
 }
 
@@ -29,7 +29,7 @@ Login(UserName, Password){
 }
 
  GetUserClaims(){
-  return this.http.get(this.Url+"/api/GetUserClaims");
+  return this.http.get(this.Url+"/Authentication/Claims");
 }
 
 }

@@ -58,22 +58,22 @@ export class ImageDetailsComponent implements OnInit {
   }
 
   async DeleteImage(Image: Images) {
-    if (await this.IsAdmin()) {
-      await this.adminService.DeleteImage(Image).subscribe(()=>{
-        this.NeedRefreshing.emit(Image.UserId);
-        this.toastr.success("Deleted Successfull");
-      });
+    // if (await this.IsAdmin()) {
+    //   await this.adminService.DeleteImage(Image).subscribe(()=>{
+    //     this.NeedRefreshing.emit(Image.UserId);
+    //     this.toastr.success("Deleted Successfull");
+    //   });
       
-    }
-    else {
+    // }
+    // else {
       this.service.DeleteImage(Image).subscribe(() => {
         this.toastr.success("Deleted successfull");
-        this.NeedRefreshing.emit(true);
+        this.NeedRefreshing.emit(Image.UserId);
         this.closeImageDetails();
       }, () => this.toastr.error("Something went wrong")
       );
     }
-  }
+  
 
   async IsAdmin() {
     var name;

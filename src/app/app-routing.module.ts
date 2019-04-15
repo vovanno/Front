@@ -11,7 +11,7 @@ import { AdminContentComponent } from './admin-content/admin-content.component';
 const routes: Routes = [
   {path:'Register', component: RegisterComponent},
   {path:'Login', component: LoginComponent},
-  {path:'Home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path:'Profile', component: HomeComponent, canActivate: [AuthGuard]},
   {path:'Users', component: UsersListComponent, canActivate: [AuthGuard]},
   {path:'Gallery', component: GalleryComponent},
   {path:'AdminPanel', component: AdminContentComponent}

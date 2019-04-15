@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   onSubmit(userName, Password){
     this.service.Login(userName, Password).subscribe((data: any)=>{
       localStorage.setItem("userToken",data.access_token);
-      this.router.navigate(["Home"]);
+      this.router.navigate(["Profile"]);
       this.toastr.success("Welcome");
     },
     (err: HttpErrorResponse)=>{

@@ -4,7 +4,7 @@
     <a *ngIf="service.userData.UserName =='Admin'" class="p-2 text-dark" routerLink = "AdminPanel">AdminPanel</a>
     <a class="p-2 text-dark" routerLink = "Gallery">Gallery</a>
     <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Users">Users</a>
-    <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Home">Profile</a>
+    <a *ngIf="isLoggedIn()" class="p-2 text-dark" routerLink = "Profile">Profile</a>
   </nav>
   <a *ngIf="!isLoggedIn()" class="btn btn-outline-primary" routerLink = "Register">Register</a>
   <a *ngIf="!isLoggedIn()" class="btn btn-outline-primary" routerLink = "Login">Sign In</a>

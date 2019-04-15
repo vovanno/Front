@@ -7,32 +7,32 @@ import { Images } from '../Models/images';
   providedIn: 'root'
 })
 export class ProfileService {
-formData = new Profile();
-usersList: Profile[];
+  formData = new Profile();
+  usersList: Profile[];
 
   constructor(private http: HttpClient) { }
   private readonly Url = "http://localhost:51312";
 
-  ModifyProfile(form:Profile){
-    return this.http.post(this.Url+"/Api/Profile/ModifyProfile",form)
+  ModifyProfile(profile: Profile,id:string) {
+    return this.http.put(this.Url + "/Profile/"+id, profile)
   }
 
-  GetUserProfile(){
-    return this.http.get(this.Url+"/Api/Profile/GetUserProfile");
+  GetUserProfile(id:string) {
+    return this.http.get(this.Url + "/Profile/"+ id);
   }
 
-  GetUsersList(){
-    return this.http.get(this.Url+"/Api/Profile/GetUsers");
+  GetUsersList() {
+    return this.http.get(this.Url + "/Users");
   }
 
-  UpdateAvatarImage(fileToUpload:File){
+  UpdateAvatarImage(fileToUpload: File, id: string) {
     const Data: FormData = new FormData();
-    Data.append('Image',fileToUpload,fileToUpload.name);
-    return this.http.post(this.Url+"/Api/Profile/UploadAvatar",Data);
+    Data.append('Image', fileToUpload, fileToUpload.name);
+    return this.http.put(this.Url + "/Profile/" + id + "/Avatar", Data);
   }
 
-  GetUserImages(id:string){
-    return this.http.get(this.Url+"/Api/Profile/"+ id+ "/Images");
+  GetUserImages(id: string) {
+    return this.http.get(this.Url + "/Profile/" + id + "/Images");
   }
 
 }

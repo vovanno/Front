@@ -2,7 +2,7 @@
     <div class="col-md-3 main-profile-block">
         <img class="userLogo" [src]="userImage" >
         <label for="uploadFile" class="uploadLabel">Select image</label>
-        <input type="file" id="uploadFile" hidden (change)="handleAvatarInput($event.target.files)">
+        <input type="file" id="uploadFile" hidden accept="image/*" (change)="handleAvatarInput($event.target.files)" >
             <div>
             <span #service.userData>Username: {{service.userData.UserName}}</span>
             <br>

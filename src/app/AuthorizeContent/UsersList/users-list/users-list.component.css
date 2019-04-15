@@ -20,7 +20,10 @@
     display: grid;
     width: 100px;
     align-content: center;
-    margin-left: 60px;
+}
+
+.user-item{
+    width: auto;
 }
 
 .userLogo{
@@ -43,6 +46,7 @@
     height: 600px;
     overflow: auto;
     margin: auto;
+    width: 136vh;
 }
 .flex{
     display: flex;

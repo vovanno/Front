@@ -29,8 +29,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getUserClaims();
-    this.getUserProfile(); 
-    this.GetUserImages();
   }
 
   handleAvatarInput(file: FileList){
@@ -43,7 +41,7 @@ export class HomeComponent implements OnInit {
     reader.onload = (event:any)=>
     this.userImage = event.target.result;
     reader.readAsDataURL(this.fileToUpload);
-    this.profileService.UpdateAvatarImage(this.fileToUpload).subscribe(()=>{
+    this.profileService.UpdateAvatarImage(this.fileToUpload,this.service.userData.Id).subscribe(()=>{
       this.toastr.success("Avatar updated")
     },()=>this.toastr.error("Something went wrong"));
   }
@@ -78,11 +76,15 @@ export class HomeComponent implements OnInit {
   }
 
   async getUserClaims(){
-     this.service.GetUserClaims().subscribe((data:any)=>this.service.userData = data);
+     await this.service.GetUserClaims().subscribe((data:any)=>{
+       this.service.userData = data;
+       this.getUserProfile();
+       this.GetUserImages()
+     });
   }
 
-  getUserProfile(){
-    this.profileService.GetUserProfile().subscribe((data: any)=>{
+   getUserProfile(){
+    this.profileService.GetUserProfile(this.service.userData.Id).subscribe((data: any)=>{
       this.profileService.formData = data;
           if(data.AvatarImage!="")
       this.userImage =data.AvatarImage;
@@ -90,13 +92,13 @@ export class HomeComponent implements OnInit {
   }
 
   ModifyProfile(form: NgForm){
-    this.profileService.ModifyProfile(form.value).subscribe(()=>{
+    this.profileService.ModifyProfile(form.value,this.service.userData.Id).subscribe(()=>{
       this.toastr.success("Changes saved")
     },()=>this.toastr.error("Something went wrong"));
   }
 
   GetUserImages(){
-    this.imageService.GetUserImages().subscribe((data:any)=>
+    this.profileService.GetUserImages(this.service.userData.Id).subscribe((data:any)=>
     this.imageService.imageData = data
     );
   }

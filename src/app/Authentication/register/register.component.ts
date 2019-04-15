@@ -36,7 +36,15 @@ export class RegisterComponent implements OnInit {
         this.ResetForm();
         this.router.navigate(["Login"]);      
        },
-      ()=>this.toastr.error('Something is going wrong'));
+      (message:any)=>{
+        if(message.error.ExceptionMessage!=null){
+          this.toastr.error(message.error.ExceptionMessage);
+        }
+        // console.log(message.error.ModelState.ExceptionMessage[0]);
+        else {
+          this.toastr.error(message.error.ModelState.ExceptionMessage[0]);
+        }
+      })
     }
 
 }

@@ -12,15 +12,10 @@ export class AdminService {
 
   private readonly Url = "http://localhost:51312";
 
-  DeleteUser(id: string){
-    var httpParams = new HttpParams().set('UserId',id);
-    let options = {"params": httpParams}
-    return this.http.delete(this.Url+"/Api/Admin/DeleteUser",options);
+  DeleteUser(id: string) {
+    var httpParams = new HttpParams().set('UserId', id);
+    let options = { "params": httpParams }
+    return this.http.delete(this.Url + "/Admin/User/" + id, options);
   }
 
-  DeleteImage(image: Images){
-    var httpParams = new HttpParams().set('ImageName',image.ImageName);
-    let options = {"params": httpParams}
-    return this.http.delete(this.Url+"/Api/Admin/DeleteImage",options);
-  }
 }

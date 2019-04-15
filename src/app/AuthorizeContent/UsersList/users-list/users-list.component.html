@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="user-item">
             <div *ngFor="let user of service.usersList" class="user">
                 <div class="flex">
                     <img class="userLogo" [src]="user.AvatarImage" (click)="ShowUserImages(user.Id)" alt="logo">
@@ -15,7 +15,7 @@
                 <button *ngIf="ShowDeleteUserBtn" class="DeleteUser" (click)="DeleteUser(user.Id)">Delete</button>
             </div>
         </div>
-        <div class="col-md-7 images-area" *ngIf="ShowImages">
+        <div class="images-area" *ngIf="ShowImages">
             <app-user-image *ngFor="let image of Images" [Image]="image" [ShowDeleteBtn]="ShowDeleteBtn"
                 (Refresh)="RefreshImages($event)"></app-user-image>
         </div>

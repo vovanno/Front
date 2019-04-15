@@ -18,7 +18,9 @@ export class AppComponent {
 
   logout(){
     localStorage.removeItem('userToken');
-    this.service.userData = null;
+    this.service.userData.Id="";
+    this.service.userData.Email="";
+    this.service.userData.UserName="";
   }
 
   isLoggedIn(){

@@ -17,29 +17,29 @@ export class ImageServiceService {
     const Data: FormData = new FormData();
     Data.append('Image',fileToUpload,fileToUpload.name);
     Data.append('Caption',caption);
-    return this.http.post(this.Url+"/Api/Images/UploadImage",Data);
+    return this.http.post(this.Url+"/Images/",Data);
   }
 
   DeleteImage(image:Images){
     var httpParams = new HttpParams().set('ImageName',image.ImageName);
     let options = {"params": httpParams}
-    return this.http.delete(this.Url+"/Api/Images/DeleteImage",options);
+    return this.http.delete(this.Url+"/Images/"+ image.UserId,options);
   }
   
-  GetUserImages(){
-    return this.http.get(this.Url+"/Api/Images/GetUserImages");
-  }
+  // GetUserImages(){
+  //   return this.http.get(this.Url+"/Images/GetUserImages");
+  // }
 
   GetAllImages(page:number = 1){
-    return this.http.get(this.Url+"/Api/Images/GetAllImages/"+page,{headers:this.reqHeader})
+    return this.http.get(this.Url+"/Images/"+page,{headers:this.reqHeader})
   }
 
   GetPages(){
-    return this.http.get(this.Url+"/Api/Images/GetPages",{headers:this.reqHeader}) 
+    return this.http.get(this.Url+"/Images/GetPages",{headers:this.reqHeader}) 
   }
 
   SearchImages(Caption:string){
-    return this.http.get(this.Url+"/Api/Images/Search/"+Caption,{headers:this.reqHeader});
+    return this.http.get(this.Url+"/Images/Search/"+Caption,{headers:this.reqHeader});
   }
 
 }
